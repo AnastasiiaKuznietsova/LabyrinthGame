@@ -66,6 +66,63 @@ namespace LabyrinthGame.Models
 
             return finalAction;
         }
+        public int EvaluateScoreOutcome(GameField gameField, Card cardToPlace, int xCoordinate, int yCoordinate)
+        {
+            GameField gameFieldCopy = new(gameField);
+            int scoreOutcome = 0;
+            gameFieldCopy.AddCard(xCoordinate, yCoordinate, cardToPlace);
+
+            foreach (Card possibleCardToRemove in gameFieldCopy.GetAllCards())
+            {
+                if (gameFieldCopy.AreTheseCardsTreasuresConnected(cardToPlace, possibleCardToRemove) && gameFieldCopy.IsAllowedToRemoveCard(possibleCardToRemove))
+                {
+                    scoreOutcome++;
+                }
+            }
+            gameFieldCopy.RemoveCard(xCoordinate, yCoordinate);
+
+            return scoreOutcome;
+        }
+
+        public List<Card> GetCardsToRemove(GameField gameField, Card cardToPlace, int xCoordinate, int yCoordinate)
+        {
+            GameField gameFieldCopy = new(gameField);
+            List<Card> cardsToRemove = new();
+            gameFieldCopy.AddCard(xCoordinate, yCoordinate, cardToPlace);
+
+            foreach (Card possibleCardToRemove in gameFieldCopy.GetAllCards())
+            {
+                if (gameFieldCopy.AreTheseCardsTreasuresConnected(cardToPlace, possibleCardToRemove) && gameFieldCopy.IsAllowedToRemoveCard(possibleCardToRemove))
+                {
+                    cardsToRemove.Add(possibleCardToRemove);
+                }
+            }
+            gameFieldCopy.RemoveCard(xCoordinate, yCoordinate);
+
+            return cardsToRemove;
+        }
+
+        public List<Tuple<Card, int>> GetAllPossibleCardsToPlaceInEveryRotation()
+        {
+            List<Tuple<Card, int>> possibleCards = new();
+
+            foreach (Card card in this.CardsInHand)
+            {
+                Card copiedCard = new(card);
+                possibleCards.Add((copiedCard, 0).ToTuple());
+                copiedCard = new(copiedCard);
+                copiedCard.Rotate();
+                possibleCards.Add((copiedCard, 1).ToTuple());
+                copiedCard = new(copiedCard);
+                copiedCard.Rotate();
+                possibleCards.Add((copiedCard, 2).ToTuple());
+                copiedCard = new(copiedCard);
+                copiedCard.Rotate();
+                possibleCards.Add((copiedCard, 3).ToTuple());
+            }
+
+            return possibleCards;
+        }
 
         public void DrawCard(Card pCard)
         {
