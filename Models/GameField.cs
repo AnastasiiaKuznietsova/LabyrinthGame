@@ -79,6 +79,37 @@ namespace LabyrinthGame.Models
             }
         }
 
+        // Überprüft, ob eine Karte durch Schätze mit einer anderen Karte auf dem Spielfeld verbunden ist
+        public bool IsAbleToPickUpAnyCards(Card card)
+        {
+            // Erstellt eine Liste aller möglichen Karten auf dem Spielfeld, die aufgenommen werden können
+            List<Card> allPossibleCardsToPickUp = this.GetAllCards();
+
+            foreach (Card possibleCardToPickUp in allPossibleCardsToPickUp)
+            {
+                if (this.AreTheseCardsTreasuresConnected(card, possibleCardToPickUp))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Überprüft, ob eine Karte entfernt werden darf, indem sichergestellt wird, dass die verbleibenden Karten verbunden bleiben
+        // Entfernt vorübergehend eine Karte und prüft die Verbindung aller verbleibenden Karten.
+        public bool IsAllowedToRemoveCard(Card card)
+        {
+            var position = this.GetCardCoordinate(card);
+
+            Field[position.Item1, position.Item2] = null;
+
+            bool allConnected = AreAllCardsConnected();
+
+            Field[position.Item1, position.Item2] = card;
+
+            return allConnected;
+        }
+
         // Überprüft, ob alle Karten verbunden sind
         public bool AreAllCardsConnected()
         {
