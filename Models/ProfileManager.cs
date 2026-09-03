@@ -50,9 +50,39 @@ namespace LabyrinthGame.Models
 
         //    return Convert.ToBase64String(imageBytes);
         //}
+
+        public void CreateNewProfile(string nickname)
+        {
+            if (this.CanCreateNewProfile())
+            {
+                Profile player = new(nickname)
+                {
+                    Picture = null
+                    // Picture = CapturePhoto(nickname)
+                };
+                this.GlobalProfileList.Add(player);
+                this.SaveProfiles();
+            }
+        }
         public bool CanCreateNewProfile()
         {
             return this.GlobalProfileList.Count >= 3 ? false : true;
+        }
+        // Deletes a Profile with a given nickname in the GlobalProfileList (without deleting it from the JSON file!)
+        public void DeleteProfile(string nickname)
+        {
+            Profile profileToRemove = this.GlobalProfileList.FirstOrDefault(p => p.Nickname == nickname);
+            if (profileToRemove != null)
+            {
+                GlobalProfileList.Remove(profileToRemove);
+                this.SaveProfiles();
+            }
+        }
+
+        // Deletes all Profiles in the GlobalProfileList (without deleting them from the JSON file!)
+        public void DeleteAllProfiles()
+        {
+            GlobalProfileList.Clear();
         }
     }
 }
