@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml;
 
 namespace LabyrinthGame.Models
 {
@@ -83,6 +84,28 @@ namespace LabyrinthGame.Models
         public void DeleteAllProfiles()
         {
             GlobalProfileList.Clear();
+        }
+
+        // Saves the GlobalProfileList into a JSON file called "profiles.json"
+        public void SaveProfiles()
+        {
+            File.WriteAllText("profiles.json", JsonConvert.SerializeObject(GlobalProfileList, Formatting.Indented));
+        }
+
+        // Loads the "profiles.json" file into the GlobalProfileList
+        public void LoadProfiles()
+        {
+            GlobalProfileList = File.Exists("profiles.json") ? JsonConvert.DeserializeObject<List<Profile>>(File.ReadAllText("profiles.json")) : new List<Profile>();
+        }
+
+        // Prints all Profiles in the GlobalProfileList
+        public void PrintAllProfiles()
+        {
+            Console.WriteLine("Profiles:");
+            foreach (Profile player in GlobalProfileList)
+            {
+                Console.WriteLine($"{player.Nickname} Highscore: {player.Highscore}");
+            }
         }
     }
 }
