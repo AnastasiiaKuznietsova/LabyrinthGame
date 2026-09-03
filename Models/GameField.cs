@@ -214,5 +214,72 @@ namespace LabyrinthGame.Models
             return Field[x - 1, y] != null ? true : false;
         }
         #endregion
+
+
+        #region Platziert?
+        // Gibt eine Liste von Tupeln (Koordinaten) zurück, an denen Karten im Feld platziert werden könnten
+        public List<Tuple<int, int>> GetAllPossibleNeighborCoordinates()
+        {
+            List<Tuple<int, int>> outputCoordinateList = [];
+
+            // Durchläuft das Spielfeld, um mögliche Nachbarpositionen zu finden
+            for (int x = 0; x < 99; x++)
+            {
+                for (int y = 0; y < 99; y++)
+                {
+                    if (GetCard(x, y) == null && HasNeighbor(x, y))
+                    {
+                        outputCoordinateList.Add(Tuple.Create(x, y));
+                    }
+                }
+            }
+
+            return outputCoordinateList;
+        }
+
+        // Überprüft, ob eine bestimmte Karte an einer x-y-Koordinate im Feld platziert werden kann
+        private Boolean IsAllowedToBePlaced(int x, int y, Card card)
+        {
+            // Überprüft, ob die Karte oben platziert werden kann
+            if (HasTopNeighbor(x, y))
+            {
+                if (card.Paths.ContainsKey(1) && GetCard(x, y - 1).Paths.ContainsKey(6) || card.Paths.ContainsKey(2) && GetCard(x, y - 1).Paths.ContainsKey(5)) return true;
+            }
+            // Überprüft, ob die Karte unten platziert werden kann
+            if (HasBottomNeighbor(x, y))
+            {
+                if (card.Paths.ContainsKey(6) && GetCard(x, y + 1).Paths.ContainsKey(1) || card.Paths.ContainsKey(5) && GetCard(x, y + 1).Paths.ContainsKey(2)) return true;
+            }
+            // Überprüft, ob die Karte rechts platziert werden kann
+            if (HasRightNeighbor(x, y))
+            {
+                if (card.Paths.ContainsKey(3) && GetCard(x + 1, y).Paths.ContainsKey(8) || card.Paths.ContainsKey(4) && GetCard(x + 1, y).Paths.ContainsKey(7)) return true;
+            }
+            // Überprüft, ob die Karte links platziert werden kann
+            if (HasLeftNeighbor(x, y))
+            {
+                if (card.Paths.ContainsKey(8) && GetCard(x - 1, y).Paths.ContainsKey(3) || card.Paths.ContainsKey(7) && GetCard(x - 1, y).Paths.ContainsKey(4)) return true;
+            }
+
+            return false;
+        }
+        #endregion
+
+        // Gibt eine Liste von Tupeln (Koordinaten) zurück, an denen eine bestimmte Karte im Feld platziert werden kann
+        public List<Tuple<int, int>> GetAllPossibleCoordinatesWhereCardCanBePlaced(Card card)
+        {
+            List<Tuple<int, int>> outputCoordinateList = [];
+
+            // Durchläuft alle möglichen Nachbarpositionen, um zu überprüfen, ob die Karte platziert werden kann
+            foreach ((int x, int y) in GetAllPossibleNeighborCoordinates())
+            {
+                if (IsAllowedToBePlaced(x, y, card))
+                {
+                    outputCoordinateList.Add(Tuple.Create(x, y));
+                }
+            }
+
+            return outputCoordinateList;
+        }
     }
 }
