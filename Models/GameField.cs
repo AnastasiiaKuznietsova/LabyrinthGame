@@ -124,6 +124,28 @@ namespace LabyrinthGame.Models
             // Prüft, ob alle gefilterten Koordinaten in visited enthalten sind. Gibt true zurück, wenn alle besucht wurden, sonst false
         }
 
+        public Tuple<int, int> GetCardCoordinate(Card card)
+        {
+            (int minX, _, int minY, _) = this.GetOccupiedBounds();
+
+            // Durchläuft das Spielfeld, um die Karte zu finden
+            for (int x = minX; x < xSize; x++)
+            {
+                for (int y = minY; y < ySize; y++)
+                {
+                    if (Field[x, y] != null)
+                    {
+                        if (Field[x, y] == card || Field[x, y].Id == card.Id)
+                        {
+                            return (x, y).ToTuple();
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
         // Gibt nur die möglichen Nachbarn zurück, ohne zu prüfen, ob an diesen Koordinaten tatsächlich eine Karte vorhanden ist
         public IEnumerable<(int, int)> GetNeighbors(int x, int y)
         {
@@ -155,5 +177,42 @@ namespace LabyrinthGame.Models
 
             return cards;                       // Die Liste der gefundenen Karten wird zurückgegeben
         }
+
+        #region Nachbarn?
+        // Überprüft, ob sich eine Karte oben, unten, links oder rechts der angegebenen x-y-Koordinate befindet
+        private Boolean HasNeighbor(int x, int y)
+        {
+            if (x <= 0 || y <= 0) return false;
+            return Field[x + 1, y] != null || Field[x - 1, y] != null || Field[x, y + 1] != null || Field[x, y - 1] != null ? true : false;
+        }
+
+        // Überprüft, ob sich eine Karte oben an der angegebenen x-y-Koordinate befindet
+        private Boolean HasTopNeighbor(int x, int y)
+        {
+            if (x <= 0 || y <= 0) return false;
+            return Field[x, y - 1] != null ? true : false;
+        }
+
+        // Überprüft, ob sich eine Karte unten an der angegebenen x-y-Koordinate befindet
+        private Boolean HasBottomNeighbor(int x, int y)
+        {
+            if (x <= 0 || y <= 0) return false;
+            return Field[x, y + 1] != null ? true : false;
+        }
+
+        // Überprüft, ob sich eine Karte rechts an der angegebenen x-y-Koordinate befindet
+        private Boolean HasRightNeighbor(int x, int y)
+        {
+            if (x <= 0 || y <= 0) return false;
+            return Field[x + 1, y] != null ? true : false;
+        }
+
+        // Überprüft, ob sich eine Karte links an der angegebenen x-y-Koordinate befindet
+        private Boolean HasLeftNeighbor(int x, int y)
+        {
+            if (x <= 0 || y <= 0) return false;
+            return Field[x - 1, y] != null ? true : false;
+        }
+        #endregion
     }
 }
