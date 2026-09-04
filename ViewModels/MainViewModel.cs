@@ -35,6 +35,37 @@ namespace LabyrinthGame.ViewModels
             exitWindow.Show();
             CloseCurrentWindow(parameter);
         }
+        private void OpenSettingsWindow(object? parameter)
+        {
+            var settingsWindow = new SettingsWindow();
+            settingsWindow.Show();
+            CloseCurrentWindow(parameter);
+        }
+        private void OpenChangeProfileWindow(object? parameter)
+        {
+            var changeProfileWindow = new ChangeProfileWindow();
+            changeProfileWindow.Show();
+            CloseCurrentWindow(parameter);
+        }
+        private void OpenTrophyWindow(object? parameter)
+        {
+            var trophyWindow = new TrophyWindow();
+            trophyWindow.Show();
+            CloseCurrentWindow(parameter);
+        }
 
+        private void CloseCurrentWindow(object? parameter)
+        {
+            if (parameter is Window window)
+            {
+                window.Close();
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
