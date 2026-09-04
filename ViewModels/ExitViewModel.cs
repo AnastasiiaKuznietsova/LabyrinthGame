@@ -36,5 +36,29 @@ namespace LabyrinthGame.ViewModels
             trophyWindow.Show();
         }
 
+        private void OpenHome(object? parameter)
+        {
+            var homeWindow = new MainWindow();
+            homeWindow.Show();
+        }
+
+        private void ExitApplication()
+        {
+            Application.Current.Shutdown();
+        }
+
+        private static void CloseCurrentWindow(object? parameter)
+        {
+            if (parameter is Window window)
+            {
+                window.Close();
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
