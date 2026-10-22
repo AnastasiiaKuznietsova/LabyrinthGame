@@ -140,4 +140,109 @@
     <Window.Background>
         <ImageBrush  ImageSource="C:\repos\LabyrinthGame\Resources\Images\2Background.jpeg"/>
     </Window.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="8"
+                Command="{Binding TrophyCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource TrophyBrush}">
+        </Button>
+
+        <Button Grid.Row="0" Grid.Column="0"
+                Margin="0,0,5,30"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource dSpaceBrush}"
+                IsHitTestVisible="False">
+        </Button>
+
+        <Button Grid.Row="0" Grid.Column="1"
+                Command="{Binding HomeCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource HomeBrush}">
+        </Button>
+
+        <Button Grid.Row="9" Grid.Column="9"
+                Command="{Binding ExitCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource ExitBrush}">
+        </Button>
+
+        <Button Grid.Row="0" Grid.Column="9"
+                Command="{Binding SettingsCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource SettingsBrush}">
+        </Button>
+
+        <Button Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="4"
+                Width="150" Height="150"
+                Style="{StaticResource ImageButtonStyle}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Background="{StaticResource VolumeBrush}"
+                IsHitTestVisible="False" >
+        </Button>
+
+        <Button Grid.Row="6" Grid.Column="6" Grid.ColumnSpan="2" Grid.RowSpan="2"
+                Command="{Binding PlusCommand}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource PlusBrush}">
+        </Button>
+
+        <Button Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2"
+                Command="{Binding MinusCommand}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource MinusBrush}">
+        </Button>
+
+        <Button Grid.Row="9" Grid.Column="0"
+                Command="{Binding SaveCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource SaveBrush}">
+        </Button>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="10"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Text="{Binding CurrentVolume, StringFormat='Volume: {0}'}"
+                   FontSize="46" 
+                   Foreground="White"  Grid.RowSpan="2" >
+        </TextBlock>
+
+    </Grid>
 </Window>
