@@ -15,23 +15,23 @@
     </Window.DataContext>
 
     <Window.Resources>
-        <ImageBrush x:Key="1Background" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\1Background.jpeg"/>
-        <ImageBrush x:Key="2Background" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\2Background.jpeg"/>
-        <ImageBrush x:Key="BlurredBackground" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\blurredBackground.jpeg"/>
-        <ImageBrush x:Key="CloseBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\close.png"/>
-        <ImageBrush x:Key="CongratsBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\congrats.png"/>
-        <ImageBrush x:Key="DeleteBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\delete.png"/>
-        <ImageBrush x:Key="dSpaceBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\dSpace.png"/>
-        <ImageBrush x:Key="dSpaceKarteBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\dSpaceKarte.jpeg"/>
-        <ImageBrush x:Key="ExitBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\exit.png"/>
-        <ImageBrush x:Key="HomeBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\home.png"/>
-        <ImageBrush x:Key="MinusBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\minus.png"/>
-        <ImageBrush x:Key="PlusBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\plus.png"/>
-        <ImageBrush x:Key="SaveBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\save.png"/>
-        <ImageBrush x:Key="SettingsBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\settings.png"/>
-        <ImageBrush x:Key="TrophyBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\trophy.png"/>
-        <ImageBrush x:Key="VolumeBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\volume.png"/>
-        <ImageBrush x:Key="WinnerBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\winner.png"/>
+        <ImageBrush x:Key="1Background" ImageSource="C:\repos\LabyrinthGame\Resources\Images\1Background.jpeg"/>
+        <ImageBrush x:Key="2Background" ImageSource="C:\repos\LabyrinthGame\Resources\Images\2Background.jpeg"/>
+        <ImageBrush x:Key="BlurredBackground" ImageSource="C:\repos\LabyrinthGame\Resources\Images\blurredBackground.jpeg"/>
+        <ImageBrush x:Key="CloseBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\close.png"/>
+        <ImageBrush x:Key="CongratsBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\congrats.png"/>
+        <ImageBrush x:Key="DeleteBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\delete.png"/>
+        <ImageBrush x:Key="dSpaceBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\dSpace.png"/>
+        <ImageBrush x:Key="dSpaceKarteBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\dSpaceKarte.jpeg"/>
+        <ImageBrush x:Key="ExitBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\exit.png"/>
+        <ImageBrush x:Key="HomeBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\home.png"/>
+        <ImageBrush x:Key="MinusBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\minus.png"/>
+        <ImageBrush x:Key="PlusBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\plus.png"/>
+        <ImageBrush x:Key="SaveBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\save.png"/>
+        <ImageBrush x:Key="SettingsBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\settings.png"/>
+        <ImageBrush x:Key="TrophyBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\trophy.png"/>
+        <ImageBrush x:Key="VolumeBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\volume.png"/>
+        <ImageBrush x:Key="WinnerBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\winner.png"/>
 
         <Style x:Key="BaseButtonStyle" TargetType="Button">
             <Setter Property="FontSize" Value="55"/>
@@ -140,7 +140,7 @@
     </Window.Resources>
 
     <Window.Background>
-        <ImageBrush ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\2Background.jpeg"/>
+        <ImageBrush  ImageSource="C:\repos\LabyrinthGame\Resources\Images\2Background.jpeg"/>
     </Window.Background>
 
     <Grid>
