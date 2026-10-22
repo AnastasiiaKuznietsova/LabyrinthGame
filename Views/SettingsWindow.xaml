@@ -1,0 +1,25 @@
+<Window x:Class="LabyrinthGame.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:LabyrinthGame"
+        Title="SettingsWindow"
+        Height="600"
+        Width="800"
+        WindowState="Normal"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <local:SettingsViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+    </Window.Resources>
+
+    <Window.Background>
+        <ImageBrush ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\2Background.jpeg"/>
+    </Window.Background>
+
+
+</Window>
