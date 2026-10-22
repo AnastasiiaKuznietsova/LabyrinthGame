@@ -12,23 +12,23 @@
     </Window.DataContext>
 
     <Window.Resources>
-        <ImageBrush x:Key="1Background" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\1Background.jpeg"/>
-        <ImageBrush x:Key="2Background" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\2Background.jpeg"/>
-        <ImageBrush x:Key="BlurredBackground" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\blurredBackground.jpeg"/>
-        <ImageBrush x:Key="CloseBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\close.png"/>
-        <ImageBrush x:Key="CongratsBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\congrats.png"/>
-        <ImageBrush x:Key="DeleteBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\delete.png"/>
-        <ImageBrush x:Key="dSpaceBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\dSpace.png"/>
-        <ImageBrush x:Key="dSpaceKarteBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\dSpaceKarte.jpeg"/>
-        <ImageBrush x:Key="ExitBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\exit.png"/>
-        <ImageBrush x:Key="HomeBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\home.png"/>
-        <ImageBrush x:Key="MinusBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\minus.png"/>
-        <ImageBrush x:Key="PlusBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\plus.png"/>
-        <ImageBrush x:Key="SaveBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\save.png"/>
-        <ImageBrush x:Key="SettingsBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\settings.png"/>
-        <ImageBrush x:Key="TrophyBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\trophy.png"/>
-        <ImageBrush x:Key="VolumeBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\volume.png"/>
-        <ImageBrush x:Key="WinnerBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\winner.png"/>
+        <ImageBrush x:Key="1Background" ImageSource="C:\repos\LabyrinthGame\Resources\Images\1Background.jpeg"/>
+        <ImageBrush x:Key="2Background" ImageSource="C:\repos\LabyrinthGame\Resources\Images\2Background.jpeg"/>
+        <ImageBrush x:Key="BlurredBackground" ImageSource="C:\repos\LabyrinthGame\Resources\Images\blurredBackground.jpeg"/>
+        <ImageBrush x:Key="CloseBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\close.png"/>
+        <ImageBrush x:Key="CongratsBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\congrats.png"/>
+        <ImageBrush x:Key="DeleteBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\delete.png"/>
+        <ImageBrush x:Key="dSpaceBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\dSpace.png"/>
+        <ImageBrush x:Key="dSpaceKarteBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\dSpaceKarte.jpeg"/>
+        <ImageBrush x:Key="ExitBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\exit.png"/>
+        <ImageBrush x:Key="HomeBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\home.png"/>
+        <ImageBrush x:Key="MinusBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\minus.png"/>
+        <ImageBrush x:Key="PlusBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\plus.png"/>
+        <ImageBrush x:Key="SaveBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\save.png"/>
+        <ImageBrush x:Key="SettingsBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\settings.png"/>
+        <ImageBrush x:Key="TrophyBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\trophy.png"/>
+        <ImageBrush x:Key="VolumeBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\volume.png"/>
+        <ImageBrush x:Key="WinnerBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\winner.png"/>
 
         <Style x:Key="BaseButtonStyle" TargetType="Button">
             <Setter Property="FontSize" Value="55"/>
@@ -140,7 +140,95 @@
     <Window.Background>
         <ImageBrush  ImageSource="C:\repos\LabyrinthGame\Resources\Images\2Background.jpeg"/>
     </Window.Background>
-    
-    <Grid></Grid>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="8"
+                Command="{Binding TrophyCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource TrophyBrush}">
+        </Button>
+
+        <Button Grid.Row="0" Grid.Column="0"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource dSpaceBrush}"
+                IsHitTestVisible="False" Margin="0,0,5,30">
+        </Button>
+
+        <Button Grid.Row="0" Grid.Column="1"
+                Command="{Binding HomeCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource HomeBrush}">
+        </Button>
+
+        <Button Grid.Row="9" Grid.Column="9"
+                Command="{Binding ExitCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource ExitBrush}">
+        </Button>
+
+        <Button Grid.Row="9" Grid.Column="0"
+                Command="{Binding CloseCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource CloseBrush}">
+        </Button>
+
+        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="10" Grid.ColumnSpan="8"
+                CornerRadius="50" Background="#111B4A" 
+                HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Margin="0" Padding="10" MaxWidth="1000">
+            <Border BorderBrush="White" BorderThickness="5" CornerRadius="50">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="30" Padding="10" Foreground="White">
+                    -The maximum number of players is 2.<LineBreak/>
+                    -The player who has the first turn of the round is determined randomly.<LineBreak/>
+                    -The goal of the game is to create paths that connect two identical treasures in a maze.<LineBreak/> 
+                    -Sometimes it is possible to create a connection of paths that contain two or more treasures. <LineBreak/>
+                    -The player takes the card or cards with which the path connecting the same treasures in the maze was created.<LineBreak/> 
+                    -The player can bring the chosen card to the playing field and try to see if the path has been created.<LineBreak/> 
+                    -When a player places a card, the position of the card can no longer be changed.<LineBreak/>
+                    -A map cannot be placed unless it is connected by a track.<LineBreak/>
+                    -At the end of their turn, the player draws a new card from the deck so that there are always two cards in their hand.<LineBreak/> 
+                    -To turn the card over - click the right mouse button.<LineBreak/>
+                    -To move the card - hold down the left mouse button, to put the card down - release the left mouse button.<LineBreak/>
+                    -The game ends as soon as the deck of cards is used up and all players use their cards.<LineBreak/>
+                    -Whoever has more cards in the end wins the game.<LineBreak/>
+                </TextBlock>
+            </Border>
+        </Border>
+
+    </Grid>
 
 </Window>
