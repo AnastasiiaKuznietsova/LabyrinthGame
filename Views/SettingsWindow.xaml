@@ -143,5 +143,97 @@
         <ImageBrush ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\2Background.jpeg"/>
     </Window.Background>
 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="8"
+                Command="{Binding TrophyCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource TrophyBrush}">
+        </Button>
+
+        <Button Grid.Row="0" Grid.Column="0"
+                Margin="0,0,5,30"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource dSpaceBrush}"
+                IsHitTestVisible="False">
+        </Button>
+
+        <Button Grid.Row="0" Grid.Column="1"
+                Command="{Binding HomeCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource HomeBrush}">
+        </Button>
+
+        <Button Grid.Row="9" Grid.Column="9"
+                Command="{Binding ExitCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource ExitBrush}">
+        </Button>
+
+        <Button Grid.Row="9" Grid.Column="0"
+                Command="{Binding CloseCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource CloseBrush}">
+        </Button>
+
+        <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="10"
+                CornerRadius="10" Background="#111B4A" 
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border BorderBrush="White" BorderThickness="5" CornerRadius="10">
+                <Button Content="Rules" 
+                        Command="{Binding RulesCommand}" 
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                        Style="{StaticResource TextButtonWithEffectStyle}" 
+                        FontSize="34" Height="50" Width="350">
+                </Button>
+            </Border>
+        </Border>
+
+        <Border Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="10"
+                CornerRadius="10" Background="#111B4A" 
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border BorderBrush="White" BorderThickness="5" CornerRadius="10">
+                <Button Content="Volume" 
+                        Command="{Binding VolumeCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                        Style="{StaticResource TextButtonWithEffectStyle}" 
+                        FontSize="34" Height="50" Width="350"/>
+            </Border>
+        </Border>
+
+    </Grid>
 
 </Window>
