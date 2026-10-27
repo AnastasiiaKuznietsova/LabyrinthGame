@@ -5,8 +5,213 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LabyrinthGame"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1080" Width="1920"
+             WindowState="Normal" WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <ImageBrush x:Key="1Background" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\1Background.jpeg"/>
+        <ImageBrush x:Key="2Background" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\2Background.jpeg"/>
+        <ImageBrush x:Key="BlurredBackground" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\blurredBackground.jpeg"/>
+        <ImageBrush x:Key="CloseBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\close.png"/>
+        <ImageBrush x:Key="CongratsBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\congrats.png"/>
+        <ImageBrush x:Key="DeleteBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\delete.png"/>
+        <ImageBrush x:Key="dSpaceBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\dSpace.png"/>
+        <ImageBrush x:Key="dSpaceKarteBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\dSpaceKarte.jpeg"/>
+        <ImageBrush x:Key="ExitBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\exit.png"/>
+        <ImageBrush x:Key="HomeBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\home.png"/>
+        <ImageBrush x:Key="MinusBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\minus.png"/>
+        <ImageBrush x:Key="PlusBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\plus.png"/>
+        <ImageBrush x:Key="SaveBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\save.png"/>
+        <ImageBrush x:Key="SettingsBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\settings.png"/>
+        <ImageBrush x:Key="TrophyBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\trophy.png"/>
+        <ImageBrush x:Key="VolumeBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\volume.png"/>
+        <ImageBrush x:Key="WinnerBrush" ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\winner.png"/>
+
+        <Style x:Key="BaseButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="55"/>
+            <Setter Property="FontWeight" Value="ExtraBold"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ImageButtonStyle" BasedOn="{StaticResource BaseButtonStyle}" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                            <Image Source="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                     To="0.9" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                     To="0.9" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                     To="1.0" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                     To="1.0" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TextButtonStyle" BasedOn="{StaticResource BaseButtonStyle}" TargetType="Button">
+            <Setter Property="Background" Value="#111B4A"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" CornerRadius="50">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TextButtonWithEffectStyle" BasedOn="{StaticResource TextButtonStyle}" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" CornerRadius="50">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                     To="0.9" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                     To="0.9" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                     To="1.0" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                     To="1.0" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Window.Background>
+        <ImageBrush ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\1Background.jpeg"/>
+    </Window.Background>
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="9"
+                Command="{Binding SettingsCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource SettingsBrush}">
+        </Button>
+
+        <Button Grid.Row="0" Grid.Column="0"
+                Command="{Binding SecretCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource dSpaceBrush}"
+                IsHitTestVisible="True" Margin="0,0,5,30">
+        </Button>
+
+        <Button Grid.Row="0" Grid.Column="8" 
+                Command="{Binding TrophyCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource TrophyBrush}">
+        </Button>
+
+        <Button Grid.Row="9" Grid.Column="9"
+                Command="{Binding ExitCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource ExitBrush}" >
+        </Button>
+
+        <Border Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="10"  Grid.RowSpan="3"
+                CornerRadius="10" Background="#111B4A" 
+                HorizontalAlignment="Center" VerticalAlignment="Center" Height="80" Width="360">
+            <Border BorderBrush="White" BorderThickness="5" CornerRadius="10">
+                <Button Content="Select profile"
+                        Command="{Binding ChangeProfileCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                        Style="{StaticResource TextButtonWithEffectStyle}"
+                        FontSize="40"/>
+            </Border>
+        </Border>
 
     </Grid>
+
 </Window>
