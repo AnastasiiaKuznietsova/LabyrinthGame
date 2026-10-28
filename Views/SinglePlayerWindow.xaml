@@ -161,10 +161,8 @@
     </Window.Resources>
 
     <Window.Background>
-        <ImageBrush ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\2Background.jpeg"/>
+        <ImageBrush  ImageSource="C:\repos\LabyrinthGame\Resources\Images\2Background.jpeg"/>
     </Window.Background>
-
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -231,28 +229,6 @@
                 Background="{StaticResource SettingsBrush}">
         </Button>
 
-        <Button Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="4"
-                Width="150" Height="150"
-                Style="{StaticResource ImageButtonStyle}"
-                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
-                Background="{StaticResource VolumeBrush}"
-                IsHitTestVisible="False" >
-        </Button>
-
-        <Button Grid.Row="6" Grid.Column="6" Grid.ColumnSpan="2" Grid.RowSpan="2"
-                Command="{Binding PlusCommand}"
-                Width="85" Height="85"
-                Style="{StaticResource ImageButtonStyle}"
-                Background="{StaticResource PlusBrush}">
-        </Button>
-
-        <Button Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2"
-                Command="{Binding MinusCommand}"
-                Width="85" Height="85"
-                Style="{StaticResource ImageButtonStyle}"
-                Background="{StaticResource MinusBrush}">
-        </Button>
-
         <Button Grid.Row="9" Grid.Column="0"
                 Command="{Binding SaveCommand}"
                 CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
@@ -261,12 +237,56 @@
                 Background="{StaticResource SaveBrush}">
         </Button>
 
-        <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="10"
-                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                   Text="{Binding CurrentVolume, StringFormat='Volume: {0}'}"
-                   FontSize="46" 
-                   Foreground="White"  Grid.RowSpan="2" >
-        </TextBlock>
+        <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="10"  Grid.RowSpan="3"
+                CornerRadius="10" Background="#111B4A" 
+                HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Height="82" Width="500">
+            <Border BorderBrush="White" BorderThickness="5" CornerRadius="10">
+                <Button Content="Complexity" 
+                        IsHitTestVisible="False"
+                        Style="{StaticResource TextButtonStyle}"
+                        FontSize="34">
+                </Button>
+            </Border>
+        </Border>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="10"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border CornerRadius="10" Background="Green" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Height="70" Width="200">
+                <Border BorderBrush="White" BorderThickness="5" CornerRadius="10">
+                    <Button Content="Easy" 
+                            IsHitTestVisible="False"
+                            Style="{StaticResource TextButtonStyle}"
+                            Background="Green"
+                            FontSize="30">
+                    </Button>
+                </Border>
+            </Border>
+            <RadioButton GroupName="Profiles" VerticalAlignment="Center" Margin="5" 
+                         Style="{StaticResource LargeRadioButton}" Tag="Medium" 
+                         IsChecked="{Binding IsDifficulty2Checked}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="10"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border CornerRadius="10" Background="DarkRed" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Height="70" Width="200">
+                <Border BorderBrush="White" BorderThickness="5" CornerRadius="10">
+                    <Button Content="Hard" 
+                            IsHitTestVisible="False"
+                            Style="{StaticResource TextButtonStyle}"
+                            Background="DarkRed"
+                            FontSize="30">
+                    </Button>
+                </Border>
+            </Border>
+            <RadioButton GroupName="Profiles" VerticalAlignment="Center" Margin="5" 
+                         Style="{StaticResource LargeRadioButton}" Tag="Hard" 
+                         IsChecked="{Binding IsDifficulty3Checked}"/>
+
+        </StackPanel>
 
     </Grid>
+
 </Window>
