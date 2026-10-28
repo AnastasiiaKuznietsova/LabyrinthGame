@@ -24,6 +24,212 @@ namespace LabyrinthGame.ViewModels
         public ICommand TryToRemoveCardCommand { get; }
         private ProgramManager ProgramManager;
 
+        public string CurrentPlayerName
+        {
+            get
+            {
+                return "Current player: " + ProgramManager.GameManager.CurrentPlayer.Profile.Nickname;
+            }
+
+        }
+
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = value;
+                OnPropertyChanged(nameof(ErrorMessage));
+            }
+        }
+
+        private Visibility _errorMessageVisibility = Visibility.Collapsed;
+        public Visibility ErrorMessageVisibility
+        {
+            get { return _errorMessageVisibility; }
+            set
+            {
+                _errorMessageVisibility = value;
+                OnPropertyChanged(nameof(ErrorMessageVisibility));
+            }
+        }
+
+        private string _player1Name;
+        public string Player1Name
+        {
+            get { return _player1Name; }
+            set
+            {
+                _player1Name = value;
+                OnPropertyChanged(nameof(Player1Name));
+            }
+        }
+
+        private string _player2Name;
+        public string Player2Name
+        {
+            get { return _player2Name; }
+            set
+            {
+                _player2Name = value;
+                OnPropertyChanged(nameof(Player2Name));
+            }
+        }
+
+        private int _fieldCardsSizeX;
+        public int FieldCardsSizeX
+        {
+            get { return _fieldCardsSizeX; }
+            set
+            {
+                _fieldCardsSizeX = value;
+                OnPropertyChanged(nameof(FieldCardsSizeX));
+            }
+        }
+
+        private int _fieldCardsSizeY;
+        public int FieldCardsSizeY
+        {
+            get { return _fieldCardsSizeY; }
+            set
+            {
+                _fieldCardsSizeY = value;
+                OnPropertyChanged(nameof(FieldCardsSizeY));
+            }
+        }
+
+        public int Player1Score
+        {
+            get
+            {
+                return ProgramManager.GameManager.Player1.Score;
+            }
+        }
+
+        public int Player2Score
+        {
+            get
+            {
+                return ProgramManager.GameManager.Player2.Score;
+            }
+        }
+
+        public Card? LastPlacedCard
+        {
+            get
+            {
+                return ProgramManager.GameManager.GameField.LastPlacedCard;
+            }
+        }
+
+        private ObservableCollection<Card> _fieldCards;
+        public ObservableCollection<Card> FieldCards
+        {
+            get { return _fieldCards; }
+            set
+            {
+                _fieldCards = value;
+                OnPropertyChanged(nameof(FieldCards));
+            }
+        }
+
+        private ObservableCollection<Card> _player1Cards;
+        public ObservableCollection<Card> Player1Cards
+        {
+            get { return _player1Cards; }
+            set
+            {
+                _player1Cards = value;
+                OnPropertyChanged(nameof(Player1Cards));
+            }
+        }
+
+        private ObservableCollection<Card> _player2Cards;
+        public ObservableCollection<Card> Player2Cards
+        {
+            get { return _player2Cards; }
+            set
+            {
+                _player2Cards = value;
+                OnPropertyChanged(nameof(Player2Cards));
+            }
+        }
+
+        public bool IsPlayer1CardsEnabled
+        {
+            get
+            {
+                return ProgramManager.GameManager.Player1.IsAbleToPlaceCard;
+            }
+        }
+
+        public bool IsPlayer2CardsEnabled
+        {
+            get
+            {
+                return ProgramManager.GameManager.Player2.IsAbleToPlaceCard;
+            }
+        }
+
+        private string _deckButtonContent = "Deck";
+        public string DeckButtonContent
+        {
+            get { return _deckButtonContent; }
+            set
+            {
+                _deckButtonContent = value;
+                OnPropertyChanged(nameof(DeckButtonContent));
+            }
+        }
+
+
+        public FirstPlayingFieldViewModel()
+        {
+            HomeCommand = new RelayCommand(param => OpenHomeWindow(param));
+            ExitCommand = new RelayCommand(param => OpenExitWindow(param));
+            TrophyCommand = new RelayCommand(param => OpenTrophyWindow(param));
+            SettingsCommand = new RelayCommand(param => OpenSettingsWindow(param));
+            RotateCardCommand = new RelayCommand(param => RotateCard(param));
+            DrawCardCommand = new RelayCommand(param => DrawCard(param));
+            TryToRemoveCardCommand = new RelayCommand(param => TryToRemoveCard(param));
+
+            ProgramManager = ProgramManager.Instance;
+
+            if (ProgramManager.GameManager is OnlineMultiplayerGameManager onlineGameManager)
+            {
+                onlineGameManager.EndTurn += OnEndTurn;
+            }
+
+            Player1Name = ProgramManager.GameManager.Player1.Profile.Nickname;
+            Player2Name = ProgramManager.GameManager.Player2.Profile.Nickname;
+            OnPropertyChanged(nameof(Player1Name));
+            OnPropertyChanged(nameof(Player2Name));
+
+            FieldCards = new ObservableCollection<Card>();
+            UpdateFieldCards();
+
+            Player1Cards = new ObservableCollection<Card>();
+            Player2Cards = new ObservableCollection<Card>();
+            UpdatePlayerCardsAndScores();
+
+            OnPropertyChanged(nameof(IsPlayer1CardsEnabled));
+            OnPropertyChanged(nameof(IsPlayer2CardsEnabled));
+            FieldCards.CollectionChanged += (s, e) => OnPropertyChanged(nameof(FieldCards));
+            Player1Cards.CollectionChanged += (s, e) => OnPropertyChanged(nameof(Player1Cards));
+            Player2Cards.CollectionChanged += (s, e) => OnPropertyChanged(nameof(Player2Cards));
+
+            if (ProgramManager.GameManager is SingleplayerBotGameManager && ProgramManager.GameManager.CurrentPlayer == ProgramManager.GameManager.Player2)
+            {
+                ProgramManager.BotMakeTurn(this);
+            }
+            if (ProgramManager.GameManager is OnlineMultiplayerGameManager onlineGameManager1 && onlineGameManager1.Player1 is BotPlayer botPlayer && onlineGameManager1.CurrentPlayer == onlineGameManager1.Player1)
+            {
+                ProgramManager.BotMakeTurn(this);
+            }
+
+            this.AwaitAndExecuteOpponentActionsAsync(this);
+        }
 
         public async Task UpdateFieldCards()
         {
@@ -283,6 +489,122 @@ namespace LabyrinthGame.ViewModels
             Debug.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}, Name: {Thread.CurrentThread.Name}, Hintergrund-Thread: {Thread.CurrentThread.IsBackground}");
             UpdateFieldCards();
             UpdatePlayerCardsAndScores();
+        }
+
+        public void EndGame(Window currentGameWindow)
+        {
+            var trophyViewModel = new TrophyViewModel();
+            trophyViewModel.LoadProfiles();
+            trophyViewModel.UpdateOverallResults(ProgramManager.GameManager.Player1.Profile.Nickname, ProgramManager.GameManager.Player1.Score);
+            trophyViewModel.UpdateOverallResults(ProgramManager.GameManager.Player2.Profile.Nickname, ProgramManager.GameManager.Player2.Score);
+            trophyViewModel.SaveProfiles();
+
+            if (ProgramManager.GameManager.Player1.Score == ProgramManager.GameManager.Player2.Score)
+            {
+                var drawWindow = new DrawWindow();
+                drawWindow.Show();
+                CloseCurrentWindow(currentGameWindow);
+
+            }
+
+            else if (ProgramManager.GameManager.Player1.Score > ProgramManager.GameManager.Player2.Score)
+            {
+                var congratulationWindow = new CongratulationWindow();
+                congratulationWindow.Show();
+                CloseCurrentWindow(currentGameWindow);
+
+            }
+            else
+            {
+                var lossWindow = new LossWindow();
+                lossWindow.Show();
+                CloseCurrentWindow(currentGameWindow);
+
+            }
+        }
+
+        private async Task AwaitAndExecuteOpponentActionsAsync(FirstPlayingFieldViewModel viewModel)
+        {
+            await Task.Run(() => AwaitAndExecuteOpponentActions(viewModel));
+        }
+
+        private async void AwaitAndExecuteOpponentActions(FirstPlayingFieldViewModel viewModel)
+        {
+            if (this.ProgramManager.GameManager is OnlineMultiplayerGameManager onlineGameManager)
+            {
+                while (true)
+                {
+                    if (onlineGameManager.IsHost && onlineGameManager.CurrentPlayer == onlineGameManager.Player2)
+                    {
+                        await onlineGameManager.ReceiveAndExecuteAction();
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            viewModel.UpdateFieldCards();
+                            viewModel.UpdatePlayerCardsAndScores();
+                            if (ProgramManager.GameManager.IsGameOver(ProgramManager.GameManager.GameField.LastPlacedCard))
+                            {
+                                viewModel.EndGame(Application.Current.MainWindow);
+                            }
+                        });
+                    }
+                    else if (!onlineGameManager.IsHost && onlineGameManager.CurrentPlayer == onlineGameManager.Player2)
+                    {
+                        await onlineGameManager.ReceiveAndExecuteAction();
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            viewModel.UpdateFieldCards();
+                            viewModel.UpdatePlayerCardsAndScores();
+                            if (ProgramManager.GameManager.IsGameOver(ProgramManager.GameManager.GameField.LastPlacedCard))
+                            {
+                                viewModel.EndGame(Application.Current.MainWindow);
+                            }
+                        });
+                    }
+                }
+            }
+        }
+
+
+        private void OpenHomeWindow(object? parameter)
+        {
+            var homeWindow = new MainWindow();
+            homeWindow.Show();
+            CloseCurrentWindow(parameter);
+        }
+
+        private void OpenExitWindow(object? parameter)
+        {
+            var exitWindow = new ExitWindow();
+            exitWindow.Show();
+            CloseCurrentWindow(parameter);
+        }
+
+        private void OpenTrophyWindow(object? parameter)
+        {
+            var trophyWindow = new TrophyWindow();
+            trophyWindow.Show();
+            CloseCurrentWindow(parameter);
+        }
+
+        private void OpenSettingsWindow(object? parameter)
+        {
+            var settingsWindow = new SettingsWindow();
+            settingsWindow.Show();
+            CloseCurrentWindow(parameter);
+        }
+
+        private void CloseCurrentWindow(object? parameter)
+        {
+            if (parameter is Window window)
+            {
+                window.Close();
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        public virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
