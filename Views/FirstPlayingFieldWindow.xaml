@@ -141,8 +141,275 @@
     </Window.Resources>
 
     <Window.Background>
-        <ImageBrush ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\blurredBackground.jpeg"/>
+        <ImageBrush ImageSource=="C:\repos\LabyrinthGame\Resources\Images\blurredBackground.jpeg"/>
     </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.ColumnSpan="10" Background="Transparent" x:Name="HoverArea">
+            <StackPanel Orientation="Horizontal" Visibility="Collapsed" 
+                        x:Name="ButtonPanel" HorizontalAlignment="Right">
+                <Button Grid.Column="0"
+                        Command="{Binding TrophyCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                        Width="85" Height="85"
+                        Style="{StaticResource ImageButtonStyle}"
+                        Background="{StaticResource TrophyBrush}">
+                </Button>
+
+                <Button Grid.Column="8"
+                        Command="{Binding HomeCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                        Width="85" Height="85"
+                        Style="{StaticResource ImageButtonStyle}"
+                        Background="{StaticResource HomeBrush}">
+                </Button>
+
+                <Button Grid.Column="9"
+                        Command="{Binding SettingsCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                        Width="85" Height="85"
+                        Style="{StaticResource ImageButtonStyle}"
+                        Background="{StaticResource SettingsBrush}">
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <Button Grid.Row="9" Grid.Column="9" Grid.ColumnSpan="1" Grid.RowSpan="1"
+                Command="{Binding ExitCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="80" Height="80"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource ExitBrush}">
+        </Button>
+
+        <Button Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="2" Grid.RowSpan="2"
+                Command="{Binding DrawCardCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="170" Height="170"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource dSpaceKarteBrush}">
+        </Button>
+
+        <Border Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="1" Grid.RowSpan="1"
+                CornerRadius="10" Background="#111B4A" 
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border BorderBrush="White" BorderThickness="5" CornerRadius="10">
+                <Button Content="{Binding DeckButtonContent}" 
+                        Style="{StaticResource TextButtonStyle}" 
+                        FontSize="24" Height="40" Width="200">
+                </Button>
+            </Border>
+        </Border>
+
+        <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2"
+                CornerRadius="10" Background="#111B4A" 
+                HorizontalAlignment="Left" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="{Binding Player1Score}" 
+                           Foreground="White" FontSize="22" 
+                           HorizontalAlignment="Center" VerticalAlignment="Center">
+                </TextBlock>
+                <Border BorderBrush="White" BorderThickness="5" CornerRadius="10">
+                    <Button Content="{Binding Player1Name}"
+                            Style="{StaticResource TextButtonStyle}" 
+                            FontSize="22" Height="40" Width="200">
+                    </Button>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="4" Grid.Column="9" Grid.ColumnSpan="2" Grid.RowSpan="2"
+                CornerRadius="10" Background="#111B4A" 
+                HorizontalAlignment="Right" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="{Binding Player2Score}" 
+                           Foreground="White" FontSize="22" 
+                           HorizontalAlignment="Center" VerticalAlignment="Center">
+                </TextBlock>
+                <Border BorderBrush="White" BorderThickness="5" CornerRadius="10">
+                    <Button Content="{Binding Player2Name}"
+                            Style="{StaticResource TextButtonStyle}" 
+                            FontSize="22" Height="40" Width="200">
+                    </Button>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <!-- Current Player -->
+        <Border Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="10" Grid.RowSpan="1"
+                CornerRadius="10" Background="#111B4A" 
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border BorderBrush="Red" BorderThickness="5" CornerRadius="10">
+                <Button Content="{Binding CurrentPlayerName}"
+                    Style="{StaticResource TextButtonStyle}" 
+                        FontSize="24" Foreground="White" Height="40" Width="320"
+                        HorizontalAlignment="Center" VerticalAlignment="Center">
+                </Button>
+            </Border>
+        </Border>
+
+        <!-- Field Cards -->
+        <ItemsControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" Grid.RowSpan="10"
+              Height="800" Width="800"
+              ItemsSource="{Binding FieldCards}" AllowDrop="True">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="{Binding FieldCardsSizeY}"
+                                 Columns="{Binding FieldCardsSizeX}"
+                                 Height="800" Width="800"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Command="{Binding DataContext.TryToRemoveCardCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                            CommandParameter="{Binding}">
+                        <Image Source="{Binding ImagePath}" Stretch="Uniform" Margin="0"
+                           RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <RotateTransform Angle="{Binding ImageAngle}"/>
+                            </Image.RenderTransform>
+                        </Image>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.Style>
+                <Style TargetType="ItemsControl">
+                    <EventSetter Event="Drop" Handler="OnCardDrop">
+                    </EventSetter>
+                </Style>
+            </ItemsControl.Style>
+        </ItemsControl>
+
+        <!-- Player 1 Cards -->
+        <ItemsControl Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="4"
+                      ItemsSource="{Binding Player1Cards}" IsEnabled="{Binding IsPlayer1CardsEnabled}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding ImagePath}" Stretch="Uniform" 
+                           Width="140" Height="140" Margin="5"
+                           AllowDrop="True" Drop="OnCardDrop"
+                           RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <RotateTransform Angle="{Binding ImageAngle}">
+                            </RotateTransform>
+                        </Image.RenderTransform>
+                        <Image.InputBindings>
+                            <MouseBinding Gesture="RightClick" Command="{Binding DataContext.RotateCardCommand, 
+                                          RelativeSource={RelativeSource AncestorType=ItemsControl}}" 
+                                          CommandParameter="{Binding}">
+                            </MouseBinding>
+                        </Image.InputBindings>
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <EventSetter Event="MouseMove" Handler="OnCardDrag"/>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Player 2 Cards -->
+        <ItemsControl Grid.Row="6" Grid.Column="9" Grid.ColumnSpan="1" Grid.RowSpan="4"
+                      ItemsSource="{Binding Player2Cards}" IsEnabled="{Binding IsPlayer2CardsEnabled}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding ImagePath}" Stretch="Uniform" 
+                           Width="140" Height="140" Margin="5"
+                           AllowDrop="True" Drop="OnCardDrop"
+                           RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <RotateTransform Angle="{Binding ImageAngle}">
+                            </RotateTransform>
+                        </Image.RenderTransform>
+                        <Image.InputBindings>
+                            <MouseBinding Gesture="RightClick" Command="{Binding DataContext.RotateCardCommand, 
+                                          RelativeSource={RelativeSource AncestorType=ItemsControl}}" 
+                                          CommandParameter="{Binding}">
+                            </MouseBinding>
+                        </Image.InputBindings>
+                        <Image.Style>
+                            <Style TargetType="Image">
+                                <EventSetter Event="MouseMove" Handler="OnCardDrag"/>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Advice-->
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" Grid.RowSpan="1"
+                CornerRadius="10" Background="#111B4A" 
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Visibility="{Binding ErrorMessageVisibility}">
+            <Border BorderBrush="Red" BorderThickness="5" CornerRadius="10">
+                <Button x:Name="ErrorMessageButton"
+                        Style="{StaticResource TextButtonStyle}" 
+                        FontSize="30" Foreground="White" Height="50" Width="800"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Content="{Binding ErrorMessage}">
+                </Button>
+            </Border>
+        </Border>
+
+    </Grid>
+
+    <!-- Verstecktes Panel für zusätzliche Spieltasten-->
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="MouseEnter" SourceName="HoverArea">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonPanel" Storyboard.TargetProperty="Visibility">
+                        <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Visible}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="MouseLeave" SourceName="HoverArea">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ButtonPanel" Storyboard.TargetProperty="Visibility">
+                        <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Collapsed}"/>
+                    </ObjectAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
 
 </Window>
