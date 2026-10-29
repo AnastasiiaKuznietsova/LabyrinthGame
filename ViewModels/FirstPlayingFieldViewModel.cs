@@ -564,7 +564,6 @@ namespace LabyrinthGame.ViewModels
             }
         }
 
-
         private void OpenHomeWindow(object? parameter)
         {
             var homeWindow = new MainWindow();

@@ -29,6 +29,8 @@
         <ImageBrush x:Key="TrophyBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\trophy.png"/>
         <ImageBrush x:Key="VolumeBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\volume.png"/>
         <ImageBrush x:Key="WinnerBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\winner.png"/>
+        <ImageBrush x:Key="LossBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\loss.jpg"/>
+        <ImageBrush x:Key="DrawBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\draw.jpg"/>
         
         <Style x:Key="BaseButtonStyle" TargetType="Button">
             <Setter Property="FontSize" Value="55"/>
