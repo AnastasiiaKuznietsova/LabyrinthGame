@@ -1,0 +1,36 @@
+<Window x:Class="LabyrinthGame.VolumeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:LabyrinthGame"
+        Title="MultiPlayerLocallyWindow" Height="600" Width="800"
+        WindowState="Normal" WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <local:MultiPlayerLocallyViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <ImageBrush x:Key="1Background" ImageSource="C:\repos\LabyrinthGame\Resources\Images\1Background.jpeg"/>
+        <ImageBrush x:Key="2Background" ImageSource="C:\repos\LabyrinthGame\Resources\Images\2Background.jpeg"/>
+        <ImageBrush x:Key="BlurredBackground" ImageSource="C:\repos\LabyrinthGame\Resources\Images\blurredBackground.jpeg"/>
+        <ImageBrush x:Key="CloseBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\close.png"/>
+        <ImageBrush x:Key="CongratsBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\congrats.png"/>
+        <ImageBrush x:Key="DeleteBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\delete.png"/>
+        <ImageBrush x:Key="dSpaceBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\dSpace.png"/>
+        <ImageBrush x:Key="dSpaceKarteBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\dSpaceKarte.jpeg"/>
+        <ImageBrush x:Key="ExitBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\exit.png"/>
+        <ImageBrush x:Key="HomeBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\home.png"/>
+        <ImageBrush x:Key="MinusBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\minus.png"/>
+        <ImageBrush x:Key="PlusBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\plus.png"/>
+        <ImageBrush x:Key="SaveBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\save.png"/>
+        <ImageBrush x:Key="SettingsBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\settings.png"/>
+        <ImageBrush x:Key="TrophyBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\trophy.png"/>
+        <ImageBrush x:Key="VolumeBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\volume.png"/>
+        <ImageBrush x:Key="WinnerBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\winner.png"/>
+        <ImageBrush x:Key="LossBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\loss.jpg"/>
+        <ImageBrush x:Key="DrawBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\draw.jpg"/>
+
+      </Window.Resources>
+</Window>
