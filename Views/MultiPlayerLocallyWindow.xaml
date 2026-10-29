@@ -166,4 +166,148 @@
     <Window.Background>
         <ImageBrush ImageSource="C:\repos\LabyrinthGame\Resources\Images\2Background.jpeg"/>
     </Window.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="8"
+                Command="{Binding TrophyCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource TrophyBrush}">
+        </Button>
+
+        <Button Grid.Row="0" Grid.Column="0"
+                Margin="0,0,5,30"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource dSpaceBrush}"
+                IsHitTestVisible="False">
+        </Button>
+
+        <Button Grid.Row="0" Grid.Column="1"
+                Command="{Binding HomeCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource HomeBrush}">
+        </Button>
+
+        <Button Grid.Row="9" Grid.Column="9"
+                Command="{Binding ExitCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource ExitBrush}">
+        </Button>
+
+        <Button Grid.Row="0" Grid.Column="9"
+                Command="{Binding SettingsCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource SettingsBrush}">
+        </Button>
+
+        <Button Grid.Row="9" Grid.Column="0"
+                Command="{Binding SaveCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                Width="85" Height="85"
+                Style="{StaticResource ImageButtonStyle}"
+                Background="{StaticResource SaveBrush}">
+        </Button>
+
+        <Border Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="10" Grid.RowSpan="2"
+                CornerRadius="10" Background="#111B4A" 
+                HorizontalAlignment="Left" VerticalAlignment="Center" 
+                Height="80" Width="450">
+            <Border BorderBrush="White" BorderThickness="5" CornerRadius="10">
+                <Button Content="Select opponent profile" 
+                        IsHitTestVisible="False"
+                        Style="{StaticResource TextButtonStyle}"
+                        FontSize="34">
+                </Button>
+            </Border>
+        </Border>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3">
+            <Border CornerRadius="10" Background="#111B4A" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Height="70" Width="250">
+                <Border BorderBrush="White" BorderThickness="5" CornerRadius="10">
+                    <Button Content="{Binding Nickname1}" 
+                            IsHitTestVisible="False"
+                            Style="{StaticResource TextButtonStyle}"
+                            FontSize="28">
+                    </Button>
+                </Border>
+            </Border>
+            <RadioButton GroupName="Profiles" VerticalAlignment="Center" Margin="5" 
+                         Style="{StaticResource LargeRadioButton}" Tag="Nickname1" 
+                         IsChecked="{Binding IsProfile1Checked}">
+            </RadioButton>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3">
+            <Border CornerRadius="10" Background="#111B4A" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Height="70" Width="250">
+                <Border BorderBrush="White" BorderThickness="5" CornerRadius="10">
+                    <Button Content="{Binding Nickname2}" 
+                            IsHitTestVisible="False"
+                            Style="{StaticResource TextButtonStyle}"
+                            FontSize="28">
+                    </Button>
+                </Border>
+            </Border>
+            <RadioButton GroupName="Profiles" VerticalAlignment="Center" Margin="5" 
+                         Style="{StaticResource LargeRadioButton}" Tag="Nickname2"
+                         IsChecked="{Binding IsProfile2Checked}">
+            </RadioButton>
+        </StackPanel>
+
+        <Border Grid.Row="3" Grid.Column="5" Grid.RowSpan="2" Grid.ColumnSpan="5"  
+                CornerRadius="10" BorderBrush="White" BorderThickness="5" 
+                Background="#111B4A" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Width="400" Height="95">
+            <TextBox TextWrapping="Wrap" Text="{Binding NewNickname, UpdateSourceTrigger=PropertyChanged}" 
+                     Foreground="Red" Background="Transparent" TextAlignment="Center" 
+                     FontSize="32" CaretBrush="White">
+            </TextBox>
+        </Border>
+
+        <Border Grid.Row="6" Grid.Column="5" Grid.RowSpan="2" Grid.ColumnSpan="5"  
+                CornerRadius="10" Background="#111B4A" 
+                HorizontalAlignment="Center" VerticalAlignment="Top" Height="95"  Width="400">
+            <Border BorderBrush="White" BorderThickness="5" CornerRadius="10">
+                <Button Content="Add opponent Profile" 
+                        Command="{Binding CreateProfileCommand}"
+                        Style="{StaticResource TextButtonWithEffectStyle}"
+                        FontSize="34">
+                </Button>
+            </Border>
+        </Border>
+    </Grid>
 </Window>
