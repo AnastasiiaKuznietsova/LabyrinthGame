@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -224,6 +226,80 @@ namespace LabyrinthGame.Models
             viewModel.UpdateFieldCards();
             viewModel.UpdatePlayerCardsAndScores();
         }
+
+        #region Online Multiplayer
+        public async Task<bool> InitializeNewOnlineMultiplayerGameAsHost()
+        {
+            this.GameManager = new OnlineMultiplayerGameManager(true, this.Profile1, IsBot);
+
+            if (this.GameManager is OnlineMultiplayerGameManager onlineGameManager)
+            {
+                if (await onlineGameManager.StartHost())
+                {
+                    await onlineGameManager.SyncInitialGameState();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        public async Task<bool> InitializeNewOnlineMultiplayerGameAsClient()
+        {
+            this.GameManager = new OnlineMultiplayerGameManager(false, this.Profile1, IsBot);
+
+            if (this.GameManager is OnlineMultiplayerGameManager onlineGameManager)
+            {
+                if (await onlineGameManager.ConnectToHost(this.IpAddressToConnectTo))
+                {
+                    await onlineGameManager.SyncInitialGameState();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        public async Task SendAction(string actionToSend)
+        {
+            if (this.GameManager is OnlineMultiplayerGameManager onlineGameManager)
+            {
+                await onlineGameManager.SendAction(actionToSend);
+            }
+        }
+
+        public async Task<string> ReceiveAction()
+        {
+            if (this.GameManager is OnlineMultiplayerGameManager onlineGameManager)
+            {
+                return await onlineGameManager.ReceiveAction();
+            }
+
+            return string.Empty;
+        }
+
+        public IPAddress GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    Debug.WriteLine(ip.ToString());
+                    return ip;
+                }
+            }
+
+            return null;
+        }
+        #endregion
     }
 
 }
