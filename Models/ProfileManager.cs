@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 
-namespace LabyrinthGame.Models
+namespace LabyrinthGame
 {
     internal class ProfileManager
     {

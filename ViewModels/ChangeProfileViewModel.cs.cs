@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
-namespace LabyrinthGame.ViewModels
+namespace LabyrinthGame
 {
     public class ChangeProfileViewModel : INotifyPropertyChanged
     //Deklaration der Klasse ChangeProfileViewModel, die das Interface INotifyPropertyChanged implementiert,das es ermöglicht, Änderungen an Eigenschaften zu melden

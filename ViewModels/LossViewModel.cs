@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace LabyrinthGame.ViewModels
+namespace LabyrinthGame
 {
     public class LossViewModel : INotifyPropertyChanged
     {

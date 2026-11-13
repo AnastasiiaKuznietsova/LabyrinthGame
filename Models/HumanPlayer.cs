@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LabyrinthGame.Models
+namespace LabyrinthGame
 {
     public class HumanPlayer : IPlayer
     {

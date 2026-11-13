@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Media; // Zum Abspielen von Audiodateien verwendet wird
 
-namespace LabyrinthGame.Models
+namespace LabyrinthGame
 {
     internal class MusicManager
     {

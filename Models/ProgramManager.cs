@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace LabyrinthGame.Models
+namespace LabyrinthGame
 {
     internal class ProgramManager
     {

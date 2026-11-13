@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
 
-namespace LabyrinthGame.ViewModels
+namespace LabyrinthGame
 {
     public class DrawViewModel : INotifyPropertyChanged
     {

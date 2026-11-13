@@ -1,5 +1,4 @@
-﻿using LabyrinthGame.Models;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -11,7 +10,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace LabyrinthGame.ViewModels
+namespace LabyrinthGame
 {
     public class FirstPlayingFieldViewModel : INotifyPropertyChanged
     {

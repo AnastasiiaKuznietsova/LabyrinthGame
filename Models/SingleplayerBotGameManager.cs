@@ -5,7 +5,7 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LabyrinthGame.Models
+namespace LabyrinthGame
 {
     internal class SingleplayerBotGameManager : IGameManager
     {

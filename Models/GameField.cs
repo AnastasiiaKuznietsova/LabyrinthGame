@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace LabyrinthGame.Models
+namespace LabyrinthGame
 {
     internal class GameField
     {
