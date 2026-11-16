@@ -1,4 +1,3 @@
-using LabyrinthGame.ViewModels;
 using System.Windows;
 
 namespace LabyrinthGame

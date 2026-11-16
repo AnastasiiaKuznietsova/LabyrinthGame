@@ -11,7 +11,7 @@
         WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
-        <local:SettingsViewModel />
+        <local:SettingsViewModel/>
     </Window.DataContext>
 
     <Window.Resources>

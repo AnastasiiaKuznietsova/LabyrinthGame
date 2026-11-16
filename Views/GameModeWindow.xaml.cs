@@ -1,16 +1,15 @@
-using LabyrinthGame.ViewModels;
 using System.Windows;
 
 namespace LabyrinthGame
 {
-    public partial class ExitWindow : Window
+    public partial class GameModeWindow : Window
     {
-        public ExitWindow()
+        public GameModeWindow()
         {
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            this.DataContext = new ExitViewModel();
+            this.DataContext = new GameModeViewModel();
         }
     }
 }
