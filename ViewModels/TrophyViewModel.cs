@@ -8,7 +8,7 @@ using System.Windows.Input;
 using System.Xml;
 using LabyrinthGame;
 
-namespace LabyrinthGame.ViewModels
+namespace LabyrinthGame
 {
     public class TrophyViewModel : INotifyPropertyChanged
     {

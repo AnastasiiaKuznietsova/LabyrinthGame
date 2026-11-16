@@ -1,4 +1,4 @@
-<Window x:Class="LabyrinthGame.VolumeWindow"
+<Window x:Class="LabyrinthGame.CongratulationWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -142,7 +142,7 @@
     </Window.Resources>
 
     <Window.Background>
-        <ImageBrush ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\2Background.jpeg"/>
+        <ImageBrush ImageSource="C:\repos\LabyrinthGame\Resources\Images\2Background.jpeg"/>
     </Window.Background>
 
     <Grid>

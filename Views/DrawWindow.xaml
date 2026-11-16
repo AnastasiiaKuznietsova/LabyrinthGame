@@ -140,7 +140,7 @@
     </Window.Resources>
 
     <Window.Background>
-        <ImageBrush ImageSource="C:\repos\MPM2024_AD_Labyrinth\Das Verrückte Labyrinth\Pictures\2Background.jpeg"/>
+        <ImageBrush ImageSource="C:\repos\LabyrinthGame\Resources\Images\2Background.jpeg"/>
     </Window.Background>
 
     <Grid>
