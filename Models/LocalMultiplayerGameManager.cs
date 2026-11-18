@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabyrinthGame
 {
-    internal class LocalMultiplayerGameManager
+    internal class LocalMultiplayerGameManager : IGameManager
     {
         // Jeder LocalMultiplayerGameManager hat einen CardStack, ein GameField und 2 Spieler
         public Stack<Card> CardStack { get; set; }

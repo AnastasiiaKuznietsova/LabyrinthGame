@@ -9,11 +9,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Music\" />
+    <Compile Remove="Music\**" />
+    <EmbeddedResource Remove="Music\**" />
+    <None Remove="Music\**" />
+    <Page Remove="Music\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\Cards\*.png" />
+    <Resource Include="Resources\Images\Cards\*.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\Cards\Card01.png" />
   </ItemGroup>
 
 </Project>

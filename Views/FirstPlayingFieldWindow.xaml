@@ -19,8 +19,8 @@
         <ImageBrush x:Key="CloseBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\close.png"/>
         <ImageBrush x:Key="CongratsBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\congrats.png"/>
         <ImageBrush x:Key="DeleteBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\delete.png"/>
-        <ImageBrush x:Key="dSpaceBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\dSpace.png"/>
-        <ImageBrush x:Key="dSpaceKarteBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\dSpaceKarte.jpeg"/>
+        <ImageBrush x:Key="LabyrinthBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\Labyrinth.jpg"/>
+        <ImageBrush x:Key="KarteBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\Karte.jpeg"/>
         <ImageBrush x:Key="ExitBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\exit.png"/>
         <ImageBrush x:Key="HomeBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\home.png"/>
         <ImageBrush x:Key="MinusBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\minus.png"/>
@@ -215,7 +215,7 @@
                 CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
                 Width="170" Height="170"
                 Style="{StaticResource ImageButtonStyle}"
-                Background="{StaticResource dSpaceKarteBrush}">
+                Background="{StaticResource KarteBrush}">
         </Button>
 
         <Border Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="1" Grid.RowSpan="1"

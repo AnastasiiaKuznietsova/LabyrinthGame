@@ -18,8 +18,8 @@
         <ImageBrush x:Key="CloseBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\close.png"/>
         <ImageBrush x:Key="CongratsBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\congrats.png"/>
         <ImageBrush x:Key="DeleteBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\delete.png"/>
-        <ImageBrush x:Key="dSpaceBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\dSpace.png"/>
-        <ImageBrush x:Key="dSpaceKarteBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\dSpaceKarte.jpeg"/>
+        <ImageBrush x:Key="LabyrinthBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\Labyrinth.jpg"/>
+        <ImageBrush x:Key="KarteBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\Karte.jpeg"/>
         <ImageBrush x:Key="ExitBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\exit.png"/>
         <ImageBrush x:Key="HomeBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\home.png"/>
         <ImageBrush x:Key="MinusBrush" ImageSource="C:\repos\LabyrinthGame\Resources\Images\minus.png"/>
@@ -203,7 +203,7 @@
         <Button Grid.Row="0" Grid.Column="0"
                 Margin="0,0,5,30"
                 Style="{StaticResource ImageButtonStyle}"
-                Background="{StaticResource dSpaceBrush}"
+                Background="{StaticResource LabyrinthBrush}"
                 IsHitTestVisible="False">
         </Button>
 

@@ -5,7 +5,6 @@ using System.IO;
 using System.Reflection.Metadata;
 using System.Windows;
 using System.Windows.Input;
-using System.Xml;
 using LabyrinthGame;
 
 namespace LabyrinthGame

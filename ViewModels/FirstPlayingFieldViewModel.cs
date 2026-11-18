@@ -1,15 +1,14 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
+using System.Windows;
+using System.Windows.Controls.Primitives;
+using System.Windows.Controls;
 using System.Diagnostics;
+using System.Windows.Media;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
-using System.Windows.Input;
-using System.Windows.Media;
-
 namespace LabyrinthGame
 {
     public class FirstPlayingFieldViewModel : INotifyPropertyChanged
@@ -266,11 +265,11 @@ namespace LabyrinthGame
                         {
                             if (ProgramManager.SecretMode)
                             {
-                                this.FieldCards.Add(new Card("empty", "pack://application:,,,/Pictures/Profiles/Alex.png"));
+                                this.FieldCards.Add(new Card("empty", "pack://application:,,,/Resources/Profiles/Anastasiia.png"));
                             }
                             else
                             {
-                                this.FieldCards.Add(new Card("empty", "pack://application:,,,/Pictures/Cards/empty.png"));
+                                this.FieldCards.Add(new Card("empty", "pack://application:,,,/Resources/Images/Cards/empty.png"));
                             }
                         }
                     }
@@ -278,11 +277,11 @@ namespace LabyrinthGame
                     {
                         if (ProgramManager.SecretMode)
                         {
-                            this.FieldCards.Add(new Card("empty", "pack://application:,,,/Pictures/Profiles/Alex.png"));
+                            this.FieldCards.Add(new Card("empty", "pack://application:,,,/Resources/Profiles/Anastasiia.png"));
                         }
                         else
                         {
-                            this.FieldCards.Add(new Card("empty", "pack://application:,,,/Pictures/Cards/empty.png"));
+                            this.FieldCards.Add(new Card("empty", "pack://application:,,,/Resources/Images/Cards/empty.png"));
                         }
                     }
                 }
